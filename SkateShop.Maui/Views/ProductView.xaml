@@ -15,7 +15,7 @@
                 FontSize="28"
                 Text="Products" />
 
-            <CollectionView x:Name="productListing" Margin="0,25,0,0">
+            <CollectionView Margin="0,25,0,0" ItemsSource="{Binding Products}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border
@@ -37,18 +37,19 @@
                                     </Grid.ColumnDefinitions>
 
                                     <VerticalStackLayout Grid.Column="0">
-                                        <Label FontSize="24" Text="{Binding}" />
+                                        <Label FontSize="24" Text="{Binding Name}" />
 
                                         <Label
                                             Margin="0,5,0,0"
                                             FontAttributes="Bold"
                                             FontSize="14"
-                                            Text="$19.99" />
+                                            Text="{Binding Price}" />
                                     </VerticalStackLayout>
 
                                     <Button
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
+                                        Command="{Binding AddToCartCommand}"
                                         FontAttributes="Bold"
                                         Text="Add to Cart" />
                                 </Grid>
