@@ -1,21 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SkateShop.Maui.Entities.Cart
 {
     public class CartStore
     {
+        private readonly IMessenger _messenger;
         private readonly List<CartItem> _items;
 
-        public CartStore()
+        public CartStore(IMessenger messenger)
         {
+            _messenger = messenger;
             _items = new List<CartItem>();
 
-            StrongReferenceMessenger.Default.Register<CartStore, CartItemsRequestMessage>(this, (cartStore, message) =>
+            messenger.Register<CartStore, CartItemsRequestMessage>(this, (cartStore, message) =>
             {
                 message.Reply(cartStore._items);
             });
@@ -25,7 +22,7 @@ namespace SkateShop.Maui.Entities.Cart
         {
             _items.Add(item);
 
-            StrongReferenceMessenger.Default.Send(new CartItemAddedMessage(item));
+            _messenger.Send(new CartItemAddedMessage(item));
         }
     }
 }

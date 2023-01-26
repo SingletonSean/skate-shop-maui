@@ -2,13 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using SkateShop.Maui.Entities.Cart;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SkateShop.Maui.Views
 {
@@ -24,7 +19,9 @@ namespace SkateShop.Maui.Views
         }
     }
 
-    public partial class CartViewModel : ObservableValidator, IRecipient<CartItemAddedMessage>, IRecipient<CartItemsRequestMessage>
+
+    public partial class CartViewModel : ObservableValidator,
+        IRecipient<CartItemAddedMessage>
     {
         private readonly ObservableCollection<CartItemViewModel> _cartItems;
 
@@ -34,18 +31,19 @@ namespace SkateShop.Maui.Views
         [IsTrue]
         private bool _hasAgreedToTermsAndConditions;
 
-        public CartViewModel()
+        public CartViewModel(IMessenger messenger)
         {
             _cartItems = new ObservableCollection<CartItemViewModel>();
 
-            StrongReferenceMessenger.Default.Register<CartItemAddedMessage>(this);
-            StrongReferenceMessenger.Default.Register<CartItemsRequestMessage>(this);
+            messenger.RegisterAll(this);
 
-            StrongReferenceMessenger.Default.Send<CartItemsRequestMessage>();
+            var response = messenger.Send<CartItemsRequestMessage>();
+            Receive(response);
         }
 
+
         [RelayCommand]
-        public async Task Checkout()
+        private async Task Checkout()
         {
             ValidateAllProperties();
 
