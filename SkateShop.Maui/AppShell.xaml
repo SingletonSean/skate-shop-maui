@@ -7,13 +7,15 @@
     Shell.NavBarIsVisible="False">
 
     <ShellContent
+        Title="Cart"
+        ContentTemplate="{DataTemplate views:CartView}"
+        Route="CartView" />
+
+    <ShellContent
         Title="Products"
         ContentTemplate="{DataTemplate views:ProductView}"
         Route="ProductView" />
 
-    <ShellContent
-        Title="Cart"
-        ContentTemplate="{DataTemplate views:CartView}"
-        Route="CartView" />
+
 
 </Shell>

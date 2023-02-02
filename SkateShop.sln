@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkateShop.Maui", "SkateShop.Maui\SkateShop.Maui.csproj", "{101ABEED-5B64-4F9D-A1E9-6B0AAF5B35F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkateShop.Maui.Test.Functional", "SkateShop.Maui.Test.Functional\SkateShop.Maui.Test.Functional.csproj", "{958F80D4-173A-4534-8785-59054966C77E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{101ABEED-5B64-4F9D-A1E9-6B0AAF5B35F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{101ABEED-5B64-4F9D-A1E9-6B0AAF5B35F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{101ABEED-5B64-4F9D-A1E9-6B0AAF5B35F4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{958F80D4-173A-4534-8785-59054966C77E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958F80D4-173A-4534-8785-59054966C77E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958F80D4-173A-4534-8785-59054966C77E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958F80D4-173A-4534-8785-59054966C77E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
